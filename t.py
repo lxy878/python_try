@@ -72,16 +72,54 @@ import math as ma
 ##    print(c)
 
 # Countdown
-import time
-try:
-    time_in_sec = int(input("enter a number for sec:"))
-    sleep_speed = int(input("enter a speed for sleep:"))
-    for i in range(time_in_sec,0,-1):
-        sec = i%60
-        min = int(i/60)%60
-        hour = int(i/3600)
-        print(f"{hour:02}:{min:02}:{sec:02}")
-        time.sleep(1/sleep_speed)
-    print("wake up")
-except ValueError:
-    print("input is not number")
+##import time
+##try:
+##    time_in_sec = int(input("enter a number for sec:"))
+##    sleep_speed = int(input("enter a speed for sleep:"))
+##    for i in range(time_in_sec,0,-1):
+##        sec = i%60
+##        min = int(i/60)%60
+##        hour = int(i/3600)
+##        print(f"{hour:02}:{min:02}:{sec:02}")
+##        time.sleep(1/sleep_speed)
+##    print("wake up")
+##except ValueError:
+##    print("input is not number")
+
+# List [], Set {}, Tuple ()- unchangable list but faster.
+##list = ['apple','apple', 'pear', 'peach']
+##set = set(list)
+##print(set)
+
+# 2D
+##row = list()
+##matr = list()
+##for i in range(1,10):
+##    row.append(str(i))
+##    if i%3==0:
+##        matr.append(row)
+##        row = list()
+##matr.append(['*', '0', '#'])
+##print(matr)
+
+# Dictiionary {key:value}, dict.items() = key,value
+
+# Random: guessing number
+##import random
+##guess_answer = random.randint(1, 100)
+##user_guess = 0
+##while not user_guess==guess_answer:
+##    user_guess = input(f"guess a number between {1} and {100}:")
+##    if not user_guess.isdigit():
+##        print("Invalid Number");
+##        continue
+##    user_guess = int(user_guess)
+##    if user_guess<1 or user_guess>100:
+##        print("Invalid Number");
+##        continue
+##    if user_guess>guess_answer:
+##        print("too high")
+##    elif user_guess<guess_answer:
+##        print(f"too low, try to guess anther number between {1} and {100}:")
+##print("You got it")
+
