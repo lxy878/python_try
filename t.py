@@ -123,3 +123,45 @@ import math as ma
 ##        print(f"too low, try to guess anther number between {1} and {100}:")
 ##print("You got it")
 
+# Functions - pass by default, keyword, arbitrary: (*args || **keywordargs)
+##def foo1(price, default=0):
+##    return price*(1-default)
+##print(foo1(10,.2))
+##
+##def foo2(keyword1, keyword2):
+##    print(f"keyword1: {keyword1}, keyword2: {keyword2}")
+##foo2(keyword2="abc", keyword1=123)
+##
+##def foo3(*nums):
+##    print(type(nums))
+##    for num in nums:
+##        print(num)
+##foo3(1,2,3,4)
+##
+##def foo4(**keywordargs):
+##    print(type(keywordargs))
+##    for kwarg in keywordargs:
+##        print(f"key={kwarg}")
+##foo4(keyword1="abc", keyword2=123, key3="a1")
+
+# Iterables - example: for n in nums
+
+# Membership operators - in || not in
+##def not_contains(n, *nums):
+##    return n not in nums
+##print(not_contains(-1,1,2,3,4,5))
+
+# List comprehension: [expression FOR value IN iterable IF condition]
+##evens = [ n for n in range(1,10) if n%2==0]
+##print(evens)
+
+# match...case only work >= 3.10
+def check(n):
+    match n:
+        case 1:
+            print(1)
+        case 2:
+            print(2)
+        case _:
+            print("nothing")
+check(3)
