@@ -155,13 +155,29 @@ import math as ma
 ##evens = [ n for n in range(1,10) if n%2==0]
 ##print(evens)
 
-# match...case only work >= 3.10
-def check(n):
-    match n:
-        case 1:
-            print(1)
-        case 2:
-            print(2)
-        case _:
-            print("nothing")
-check(3)
+# Match...Case only work >= 3.10
+##def check(n):
+##    match n:
+##        case 1:
+##            print(1)
+##        case 2:
+##            print(2)
+##        case _:
+##            print("nothing")
+##check(3)
+
+# Module - help("MODULE_NAME")/p("MODULE_NAME")
+##from math import pi
+##import exampleModule as em
+##em.printout()
+
+# Variable scope - levels of execution, local, enclosed(=inner functions), global, built-in
+
+# Main program: use __name__(), one of dunder functions, as main so the current file can run alone like a main program 
+
+# done 41
+
+# Python Naming Convention -
+# single underscore(_NAME): local use but not inforce ?
+# dunder functions(__NAME__): the instences of a class behave in certain situations 
+# double usderscore(__NAME): private use inforced ?
