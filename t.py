@@ -173,9 +173,53 @@ import math as ma
 
 # Variable scope - levels of execution, local, enclosed(=inner functions), global, built-in
 
-# Main program: use __name__(), one of dunder functions, as main so the current file can run alone like a main program 
+# Main program: use __name__, one of dunder functions, as main so the current file can run alone like a main program 
+##def show_balance(balance):
+##    print(f"Your balance is ${balance:.2f}.")
+##
+##def deposit():
+##    try:
+##        return float(input("Enter a number to deposit:"))
+##
+##    except ValueError:
+##        print("The input is not valid to deposit")
+##        return 0
+##
+##def withdraw(balance):
+##    try:
+##        withdrow = float(input("Enter a number to withdraw:"))
+##        if withdrow>balance:
+##            print("There are not enough to withdraw")
+##            return 0
+##        return withdrow
+##    except ValueError:
+##        print("The input is not valid to withdraw")
+##        return 0;
+##    pass
+##def main():
+##    balance = 100.00
+##    running = True
+##    while running:
+##        task = input("Enter d to deposit, w to withdraw, sb to show balance or q to quit:")
+##        if task.isdigit():
+##            print("Numbers are not valid")
+##            continue
+##        task = task.lower()
+##        if task == 'w':
+##            balance-=withdraw(balance)
+##        elif task == 'q':
+##            running = False
+##        elif task == 'd':
+##            balance+=deposit()
+##        elif task == 'sb':
+##            show_balance(balance)
+##        else:
+##            print("Input is not valid")
+##    pass
+##if __name__=="__main__":
+##    main()
 
-# done 41
+
 
 # Python Naming Convention -
 # single underscore(_NAME): local use but not inforce ?
