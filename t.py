@@ -219,6 +219,64 @@ import math as ma
 ##if __name__=="__main__":
 ##    main()
 
+# Object and Class
+##class Person:
+##    count=0 # mutable class avariable 
+##    def __init__(self, firstname="", lastname=""):
+##        self.firstname = firstname
+##        self.lastname = lastname
+##        Person.count += 1
+##        
+##    def getFirstname(self):
+##        return self.firstname
+##    
+##p1 = Person("John","Dau")
+##p2 = Person("John","Dau")
+##Person.count+=1
+##print(Person.count) # print 2
+##print(p1.firstname)
+##print(p2.getFirstname())
+
+# Multiple/Inheritance - class Child(Parent,...)
+# Note:
+# 1. class variables in parent classes do not effect by editing from child classes
+# 2. the same-named functions and variables in parent classes only execute from the earliest parent (the order matters)
+# 3. class variables in a class is mutable by using the name class outside the class, but not immutable from objects created by this class
+# 4. class variables are changable by objects only if creating functions in the class that can access the variable
+class Machine:
+    m_v = 0
+    def __init__(self, model, wheels):
+        self.wheels = wheels
+        self.model = model
+        Machine.m_v +=1
+class Car(Machine):
+    c_v = 1
+    def engine(self):
+        print(f"{self.model} has an engine.")
+    
+class Robot(Machine):
+    c_v = "Int 1.0"
+    def speak(self):
+        print(f"{self.model} can speak.")
+class Transformer(Car, Robot):
+    pass
+
+m1 = Machine("",0)
+m2 = Machine("",0)
+print(Machine.m_v) # changed
+car = Car("BMW", 4)
+car.engine()
+robot = Robot("Spider X",8)
+robot.speak()
+tran = Transformer("John 2.0",4)
+tran.engine()
+tran.speak()
+tran.c_v+=1
+print(tran.c_v) # changed
+print(Transformer.c_v) # not changed
+Transformer.c_v="abc"
+print(Transformer.c_v) # class variable changed
+print(Car.c_v) # but in car, not changed
 
 
 # Python Naming Convention -
