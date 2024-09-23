@@ -1,4 +1,3 @@
-import math as ma
 # Print out format with variables by using f"{VARIABLE}"
 ##word = "World"
 ##print(f"Hello, {word}")
@@ -15,6 +14,7 @@ import math as ma
 ##print("Input is", data)
 
 # Math functions round(), abs(), pow() and import math
+##import math as ma
 ##double = 2.6
 ##print(round(double)) # 3
 ##print(ma.floor(double))
@@ -54,7 +54,7 @@ import math as ma
 ##    print("name has numbers")
 ##else:
 ##    print(f"entered name is {username}")
-    
+
 # indexing str[start:end:step] step: continuously collect different characters follow steps
 
 # format spacifier(number only): {value:flags} flags are formats insert to the value. flags can be characters, operators or number
@@ -167,13 +167,13 @@ import math as ma
 ##check(3)
 
 # Module - help("MODULE_NAME")/p("MODULE_NAME")
-##from math import pi
+##from math import pi # get pi from the math module
 ##import exampleModule as em
 ##em.printout()
 
 # Variable scope - levels of execution, local, enclosed(=inner functions), global, built-in
 
-# Main program: use __name__, one of dunder functions, as main so the current file can run alone like a main program 
+# Main program: use __name__, one of dunder functions, as main so the current file can run alone like a main program
 ##def show_balance(balance):
 ##    print(f"Your balance is ${balance:.2f}.")
 ##
@@ -221,15 +221,15 @@ import math as ma
 
 # Object and Class
 ##class Person:
-##    count=0 # mutable class avariable 
+##    count=0 # mutable class avariable
 ##    def __init__(self, firstname="", lastname=""):
 ##        self.firstname = firstname
 ##        self.lastname = lastname
 ##        Person.count += 1
-##        
+##
 ##    def getFirstname(self):
 ##        return self.firstname
-##    
+##
 ##p1 = Person("John","Dau")
 ##p2 = Person("John","Dau")
 ##Person.count+=1
@@ -239,47 +239,108 @@ import math as ma
 
 # Multiple/Inheritance - class Child(Parent,...)
 # Note:
-# 1. class variables in parent classes do not effect by editing from child classes
-# 2. the same-named functions and variables in parent classes only execute from the earliest parent (the order matters)
-# 3. class variables in a class is mutable by using the name class outside the class, but not immutable from objects created by this class
-# 4. class variables are changable by objects only if creating functions in the class that can access the variable
-class Machine:
-    m_v = 0
-    def __init__(self, model, wheels):
-        self.wheels = wheels
-        self.model = model
-        Machine.m_v +=1
-class Car(Machine):
-    c_v = 1
-    def engine(self):
-        print(f"{self.model} has an engine.")
-    
-class Robot(Machine):
-    c_v = "Int 1.0"
-    def speak(self):
-        print(f"{self.model} can speak.")
-class Transformer(Car, Robot):
-    pass
+# 1. class variables in parent classes do not effect by editing from child
+#    classes
+# 2. the same-named functions and variables in parent classes only execute from
+#    the earliest parent (the order matters)
+# 3. class variables in a class is mutable by using the name class outside the
+#    class, but not immutable from objects created by this class
+# 4. class variables are changable by objects only if creating functions in the
+#    class that can access the variable
+##class Machine:
+##    m_v = 0
+##    def __init__(self, model, wheels):
+##        self.wheels = wheels
+##        self.model = model
+##        Machine.m_v +=1
+##class Car(Machine):
+##    c_v = 1
+##    def engine(self):
+##        print(f"{self.model} has an engine.")
+##
+##class Robot(Machine):
+##    c_v = "Int 1.0"
+##    def speak(self):
+##        print(f"{self.model} can speak.")
+##class Transformer(Car, Robot):
+##    pass
+##
+##m1 = Machine("",0)
+##m2 = Machine("",0)
+##print(Machine.m_v) # changed
+##car = Car("BMW", 4)
+##car.engine()
+##robot = Robot("Spider X",8)
+##robot.speak()
+##tran = Transformer("John 2.0",4)
+##tran.engine()
+##tran.speak()
+##tran.c_v+=1
+##print(tran.c_v) # changed
+##print(Transformer.c_v) # not changed
+##Transformer.c_v="abc"
+##print(Transformer.c_v) # class variable changed
+##print(Car.c_v) # but in car, not changed
 
-m1 = Machine("",0)
-m2 = Machine("",0)
-print(Machine.m_v) # changed
-car = Car("BMW", 4)
-car.engine()
-robot = Robot("Spider X",8)
-robot.speak()
-tran = Transformer("John 2.0",4)
-tran.engine()
-tran.speak()
-tran.c_v+=1
-print(tran.c_v) # changed
-print(Transformer.c_v) # not changed
-Transformer.c_v="abc"
-print(Transformer.c_v) # class variable changed
-print(Car.c_v) # but in car, not changed
+# superclass in multiple inheritance. if a class is inherited by many parents,
+# then the super class will defined the earlies or left-most class.
+##class A:
+##    def __init__(self):
+##        pass
+##    def show(self):
+##        print("class A")
+##class B:
+##    def __init__(self):
+##        pass
+##    def show(self):
+##        print("class B")
+##class C(B,A):
+##    def __init__(self):
+##        super().__init__()
+##        pass
+##    def show(self):
+##        print("class C")
+##        super().show()  # print B
+##c = C()
+##c.show()
+
+# Polymorphism - interface, overriding, requires abc module
+##from abc import ABC, abstractmethod
+##class A(ABC):
+##    @abstractmethod
+##    def overriding(self):
+##        pass
+##class B(A):
+##    def __init__(self, name):
+##        self.name = name
+##    def overriding(self):
+##        print(f"{self.name} is printed")
+##b = B("b")
+##b.overriding()
+
+# Duck Typing: a class has some similar attributes and/or functions from other classes
+
+# Static Methods - using @staticmethod | Class Methods - using @classmethod
+##class A:
+##    n = 0
+##    @staticmethod
+##    def calldirect():
+##        print("call out without instances")
+##    @classmethod
+##    def callwith(cls):
+##        print("to access class attributes using cls instend of self")
+##        cls.n+=1
+##        print(f"n={cls.n}")
+##A.calldirect()
+##A.callwith()
+
+# Magic Methods = Dunder methods(__NAME__). built-in only.
+# common dunder methods: init, str, eq, add,
+
+
 
 
 # Python Naming Convention -
 # single underscore(_NAME): local use but not inforce ?
-# dunder functions(__NAME__): the instences of a class behave in certain situations 
+# dunder functions(__NAME__) only built-in or pre-defined: the instences of a class behave in certain situations
 # double usderscore(__NAME): private use inforced ?
