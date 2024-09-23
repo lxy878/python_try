@@ -328,7 +328,7 @@
 ##        print("call out without instances")
 ##    @classmethod
 ##    def callwith(cls):
-##        print("to access class attributes using cls instend of self")
+##        print("to access class attributes using cls instead of self")
 ##        cls.n+=1
 ##        print(f"n={cls.n}")
 ##A.calldirect()
@@ -337,10 +337,37 @@
 # Magic Methods = Dunder methods(__NAME__). built-in only.
 # common dunder methods: init, str, eq, add,
 
+# Property decorator(@) - set a method as an attribute so can be accessed with .NAME
+# WHY: one of convenient ways to access priavte attributes.
+#      using property decorator to access these attributes (although the
+#      attributes still can be accessed)
+##class A:
+##    def __init__(self,name):
+##        self._name = name
+##    @property
+##    def name(self):
+##        return self._name
+##    def __str__(self):
+##        return f"Name: {self._name}"
+##    @name.setter
+##    def name(self, new_name):
+##        self._name = new_name
+##    @name.deleter
+##    def name(self):
+##        del self._name
+##a = A("Dream")
+##print(a)
+##print(a.name)
+##a.name = "Destiny"
+##print(a.name)
+##del a.name
+
+# Decorator
+
 
 
 
 # Python Naming Convention -
 # single underscore(_NAME): local use but not inforce ?
-# dunder functions(__NAME__) only built-in or pre-defined: the instences of a class behave in certain situations
+# dunder functions(__NAME__) only built-in or pre-defined: the instances of a class behave in certain situations
 # double usderscore(__NAME): private use inforced ?
