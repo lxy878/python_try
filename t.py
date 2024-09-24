@@ -362,10 +362,31 @@
 ##print(a.name)
 ##del a.name
 
-# Decorator
+# Decorator = Callback Function
+##def motherboard(chip):
+##    def process(*args, **kwargs):
+##        print(f"Machine Powers On")
+##        chip(*args, **kwargs)
+##        print(f"Machine Powers Off")
+##    return process
+##@motherboard
+##def cpu(model):
+##    print(f"Welcome to Intel {model}")
+##@motherboard
+##def gpu(brand):
+##    print(f"😎 {brand}")
+##cpu(2.0)
+##gpu("AMD")
 
+# Exception - try...except...finally
 
+# File detection, writing files
+from os import path
+def file_detect(file_path):
+    return path.exists(file_path) and path.isfile(file_path)
+print(file_detect("exampleModule.py"))
 
+# writing files
 
 # Python Naming Convention -
 # single underscore(_NAME): local use but not inforce ?
