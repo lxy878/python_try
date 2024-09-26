@@ -380,13 +380,49 @@
 
 # Exception - try...except...finally
 
-# File detection, writing files
-from os import path
-def file_detect(file_path):
-    return path.exists(file_path) and path.isfile(file_path)
-print(file_detect("exampleModule.py"))
+# File detection
+##from os import path
+##def file_detect(file_path):
+##    return path.exists(file_path) and path.isfile(file_path)
+##print(file_detect("exampleModule.py"))
 
-# writing files
+# File: writing(w) - create and overwrite, create(e) - create only not existed,
+#       read(r) - existed only, append(a) - create and add, binary(b), text(t),
+#       read and write(r+) - add only existed, write and read(w+) - create and overwrite
+##from datetime import datetime,date
+##import json
+##path = "./assets/"
+##now = datetime.now().__str__()
+##items = {
+##    "pen": 1.99,
+##    "paper": 10,
+##    "printer": 39.99
+##}
+##file_name = date.today().__str__()
+##with open(path+file_name, 'a') as file:
+##    json.dump(items, file, indent=2)
+##    file.write(f"\nCreated on {now}\n")
+
+# date and time - import datetime
+
+# multithreading
+##import threading as thr
+##import time
+##def clean_room():
+##    time.sleep(5)
+##    print("cleaning the room")
+##def cook_meal():
+##    time.sleep(8)
+##    print("cooking a meal")
+##c1 = thr.Thread(target=cook_meal)
+##c1.start()
+##c2 = thr.Thread(target=clean_room)
+##c2.start()
+##c1.join()   # join to the queue and wait for other threads finish
+##c2.join()
+##print("Done")
+
+
 
 # Python Naming Convention -
 # single underscore(_NAME): local use but not inforce ?
