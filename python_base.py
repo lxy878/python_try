@@ -422,7 +422,18 @@
 ##c2.join()
 ##print("Done")
 
+# API - require to install requests package with pokemon api
+##import requests as req
+##base_url = "https://pokeapi.co/api/v2/"
+##def get_poke_info(id):
+##    res = req.get(f"{base_url}/pokemon/{id}")
+##    return res.json()
+##pm_json = get_poke_info(1)
+##print(pm_json["name"])
 
+# GUI - require to install PyQt5 package
+
+# Skip 67 ~ 77
 
 # Python Naming Convention -
 # single underscore(_NAME): local use but not inforce ?
