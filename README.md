@@ -2,7 +2,9 @@
 
 Python Base following tutorial: https://www.youtube.com/watch?v=ix9cRaBkVe0
 Python Backend tutorial: https://www.youtube.com/watch?v=jBzwzrDvZ18
+Python REST API tutorial: https://www.youtube.com/watch?v=0sOvCWFmrtA&t=1950s
 Django Setup: https://docs.djangoproject.com/en/5.1/intro/tutorial01/
+
 
 To install a package:
 $ python3 -m pip install <Package_Name>
@@ -16,7 +18,7 @@ $ django-admin startproject <Porject_Name>
 To run a server under the server folder:
 $ python3 manage.py runserver
 
-Continue: Introduction to django
+continue:  Python virtual Env Basics
 
 APIs from:
 Pokemons: https://pokeapi.co
