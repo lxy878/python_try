@@ -18,7 +18,8 @@ $ django-admin startproject <Porject_Name>
 To run a server under the server folder:
 $ python3 manage.py runserver
 
-continue:  Python virtual Env Basics
+To create virual environment:
+$ python3 -m venv <NAME>
 
 APIs from:
 Pokemons: https://pokeapi.co
