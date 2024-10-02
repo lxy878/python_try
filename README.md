@@ -21,5 +21,15 @@ $ python3 manage.py runserver
 To create virual environment:
 $ python3 -m venv <NAME>
 
+To run virual environment:
+$ source <PATH>/bin/activate
+
+To run fastapi server with uvicorn:
+$ uvicorn <ROOT_FILE>:<NAME_OF_API>
+
+
+To display packages:
+$ python3 -m pip freeze
+
 APIs from:
 Pokemons: https://pokeapi.co
