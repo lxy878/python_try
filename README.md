@@ -35,4 +35,4 @@ To display packages:
 $ python3 -m pip freeze
 
 APIs from:
-Pokemons: https://pokeapi.co
+Pokemons: https://pokeapi.co# python_try2
