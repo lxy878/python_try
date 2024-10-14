@@ -320,6 +320,16 @@
 
 # Duck Typing: a class has some similar attributes and/or functions from other classes
 
+# Type Hints(develop only): a format to declare avariales as a data type
+# Note: Python runtime does not enforce function and variable type annotations
+##s: int = 1
+##print(type(s), s)
+##s = "a"
+##print(type(s),s)
+##def getStr(inf: str="Default!!") -> str: # return a string result
+##    return inf
+##print(getStr(1))
+
 # Static Methods - using @staticmethod | Class Methods - using @classmethod
 ##class A:
 ##    n = 0
