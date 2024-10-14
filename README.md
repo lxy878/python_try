@@ -27,8 +27,12 @@ $ python3 -m venv <NAME>
 To run virual environment:
 $ source <PATH>/bin/activate
 
+To deactivate vir env:
+$ deactivate
+
 To run fastapi server with uvicorn:
 $ uvicorn <ROOT_FILE>:<NAME_OF_API>
+    with "--reload": for developing mode
 
 
 To display packages:
