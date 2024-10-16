@@ -28,6 +28,7 @@ def post(payload: dict = Body()):
 @app.post('/items')
 async def items_post(new_item: Item):
     data.append(new_item)
+    # await ba.write_json(data)
     return {'data': new_item}
 
 @app.get('/items/{id}')

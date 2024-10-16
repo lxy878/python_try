@@ -1,5 +1,5 @@
 from os import path as p
-import os
+import aiofiles
 import json
 
 path = "data.json"
@@ -7,10 +7,9 @@ path = "data.json"
 def is_path(path:str=path):
     return p.exists(path) and p.isfile(path)
 # create and write/overwrite file
-def write_json(data:list=[], path:str=path) -> str:
-    with open(path, 'w') as file:
-        json.dump(data, file, indent=2)
-    print("file write done")
+async def write_json(data:list=[], path:str=path) -> str:
+    async with aiofiles.open(path, 'w') as file:
+        await json.dumps(data, file, indent=2)
 # read file -> list
 def read_json(path:str=path) -> list:
     if(not is_path(path)):
