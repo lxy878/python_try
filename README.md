@@ -39,5 +39,7 @@ To display api documents: <local_host> with /docs or /redoc
 To display packages:
 $ python3 -m pip freeze
 
+Database: Psycopg 3
+
 APIs from:
 Pokemons: https://pokeapi.co# python_try2
