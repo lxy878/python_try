@@ -34,6 +34,7 @@ To run fastapi server with uvicorn:
 $ uvicorn <ROOT_FILE>:<NAME_OF_API>
     with "--reload": for developing mode
 
+To display api documents: <local_host> with /docs or /redoc
 
 To display packages:
 $ python3 -m pip freeze
