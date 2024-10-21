@@ -1,8 +1,9 @@
-from fastapi import FastAPI as api
+from fastapi import FastAPI as api, status, HTTPException
 from fastapi.params import Body
 from pydantic import BaseModel as Model
 from typing import Optional
 import psycopg as psy
+from psycopg.rows import dict_row
 
 # <NAME_OF_API>
 app = api()
@@ -17,7 +18,8 @@ class Item(Model):
 
 try:
     conn = psy.connect(conninfo='host=localhost password=open87855522  dbname=fastapi_python user=postgres port=5432')
-    cur = conn.cursor()
+    # set up retrieved data as dict
+    cur = conn.cursor(row_factory=dict_row)
     # cur.execute("""CREATE TABLE items(
     #     id serial,
     #     price numeric NOT NULL,
@@ -34,28 +36,37 @@ except Exception as error:
     print('Error: ',error)
         
 
-@app.get('/')
+@app.get('/', status_code=status.HTTP_200_OK)
 def index():
     return {"message": "WELCOME"}
 
-@app.post('/create')
-def post(payload: dict = Body()):
-    # cur.execute("""INSERT INTO items(
-	# id, price, on_sell, name, description, create_at)
-	# VALUES (?, ?, ?, ?, ?, ?)""", ())
-    return {"message": payload}
-
 @app.post('/items')
 async def items_post(new_item: Item):
-    # data.append(new_item)
-    # await ba.write_json(data)
+    # raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, "Item not found")
+    cur.execute("""INSERT INTO items (price, on_sell, name, description)
+                VALUES(%s, %s, %s, %s)""", 
+                (new_item.price, new_item.on_sell, new_item.name, new_item.description))
+    conn.commit()
     return {'data': new_item}
 
-@app.get('/items')
+@app.get('/items', status_code=status.HTTP_200_OK)
 def items_get():
     cur.execute("""select * from items""")
     items = cur.fetchall()
-    print(type(items))
     return {"items": items}
 
+@app.get('/items/{id}')
+def item_get(id:int):
+    cur.execute("""SELECT * FROM items where id=%s""", [id])
+    item = cur.fetchone()
+    return {"item": item}
 
+@app.put('/items/{id}')
+def item_update(id:int, new_item: Item):
+    cur.execute("""""")
+    return {"item": new_item}
+
+@app.delete('/items/{id}')
+def item_delete(id:int):
+    cur.execute("""DELETE FROM items WHERE id=%s""", [id])
+    return {"message": "Remove"}
