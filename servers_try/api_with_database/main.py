@@ -1,4 +1,4 @@
-from fastapi import FastAPI as api, status, HTTPException
+from fastapi import FastAPI as api, status, HTTPException, Response
 from fastapi.params import Body
 from pydantic import BaseModel as Model
 from typing import Optional
@@ -54,7 +54,7 @@ def items_get():
     items = cur.fetchall()
     return {"items": items}
 
-@app.get('/items/{id}')
+@app.get('/items/{id}', status_code=status.HTTP_200_OK)
 def item_get(id:int):
     cur.execute("""SELECT * FROM items where id=%s""", [id])
     item = cur.fetchone()
@@ -65,13 +65,22 @@ def item_get(id:int):
 
 @app.put('/items/{id}', status_code=status.HTTP_200_OK)
 def item_update(id:int, new_item: Item):
-    cur.execute("""UPDATE items SET price=%s, on_sell=%s, name=%s, description=%s WHERE id=%s""", 
+    cur.execute("""UPDATE items SET price=%s, on_sell=%s, name=%s, description=%s WHERE id=%s returning *""", 
                 (new_item.price, new_item.on_sell, new_item.name, new_item.description, f'{id}'))
+    new_item = cur.fetchone()
+    if not new_item:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f'{id} not found')
     conn.commit()
     return {"item": new_item}
 
-@app.delete('/items/{id}', status_code=status.HTTP_200_OK)
+@app.delete('/items/{id}', status_code=status.HTTP_204_NO_CONTENT)
 def item_delete(id:int):
-    cur.execute("""DELETE FROM items WHERE id=%s""", [id])
+    # add returning <attribute> to show result
+    # none if no result returns, otherwise, return attributes
+    cur.execute("""DELETE FROM items WHERE id=%s returning id""", [id])
+    result = cur.fetchone()
+    if not result:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f'{id} was not found')
     conn.commit()
-    return {"message": "Remove"}
