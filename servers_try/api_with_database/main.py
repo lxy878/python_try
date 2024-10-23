@@ -40,9 +40,8 @@ except Exception as error:
 def index():
     return {"message": "WELCOME"}
 
-@app.post('/items')
+@app.post('/items', status_code=status.HTTP_201_CREATED)
 async def items_post(new_item: Item):
-    # raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, "Item not found")
     cur.execute("""INSERT INTO items (price, on_sell, name, description)
                 VALUES(%s, %s, %s, %s)""", 
                 (new_item.price, new_item.on_sell, new_item.name, new_item.description))
@@ -59,14 +58,20 @@ def items_get():
 def item_get(id:int):
     cur.execute("""SELECT * FROM items where id=%s""", [id])
     item = cur.fetchone()
+    if not item:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
+                            detail=f'{id} was not found')
     return {"item": item}
 
-@app.put('/items/{id}')
+@app.put('/items/{id}', status_code=status.HTTP_200_OK)
 def item_update(id:int, new_item: Item):
-    cur.execute("""""")
+    cur.execute("""UPDATE items SET price=%s, on_sell=%s, name=%s, description=%s WHERE id=%s""", 
+                (new_item.price, new_item.on_sell, new_item.name, new_item.description, f'{id}'))
+    conn.commit()
     return {"item": new_item}
 
-@app.delete('/items/{id}')
+@app.delete('/items/{id}', status_code=status.HTTP_200_OK)
 def item_delete(id:int):
     cur.execute("""DELETE FROM items WHERE id=%s""", [id])
+    conn.commit()
     return {"message": "Remove"}
